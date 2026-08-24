@@ -1,0 +1,58 @@
+export const LANGUAGES = {
+  node: {
+    label: "Node.js",
+    defaultVersion: "20",
+    githubSetup: (v) => `      - uses: actions/setup-node@v4\n        with:\n          node-version: "${v}"\n`,
+    gitlabImage: (v) => `node:${v}`,
+    jenkinsNote: (v) => `// requires Node.js ${v} on the agent`,
+  },
+  dotnet: {
+    label: ".NET",
+    defaultVersion: "8.0",
+    githubSetup: (v) => `      - uses: actions/setup-dotnet@v4\n        with:\n          dotnet-version: "${v}"\n`,
+    gitlabImage: (v) => `mcr.microsoft.com/dotnet/sdk:${v}`,
+    jenkinsNote: (v) => `// requires .NET SDK ${v} on the agent`,
+  },
+  java: {
+    label: "Java",
+    defaultVersion: "21",
+    githubSetup: (v) => `      - uses: actions/setup-java@v4\n        with:\n          java-version: "${v}"\n          distribution: "temurin"\n`,
+    gitlabImage: (v) => `eclipse-temurin:${v}-jdk`,
+    jenkinsNote: (v) => `// requires JDK ${v} on the agent`,
+  },
+  go: {
+    label: "Go",
+    defaultVersion: "1.22",
+    githubSetup: (v) => `      - uses: actions/setup-go@v5\n        with:\n          go-version: "${v}"\n`,
+    gitlabImage: (v) => `golang:${v}`,
+    jenkinsNote: (v) => `// requires Go ${v} on the agent`,
+  },
+  ruby: {
+    label: "Ruby",
+    defaultVersion: "3.3",
+    githubSetup: (v) => `      - uses: ruby/setup-ruby@v1\n        with:\n          ruby-version: "${v}"\n`,
+    gitlabImage: (v) => `ruby:${v}`,
+    jenkinsNote: (v) => `// requires Ruby ${v} on the agent`,
+  },
+  php: {
+    label: "PHP",
+    defaultVersion: "8.3",
+    githubSetup: (v) => `      - uses: shivammathur/setup-php@v2\n        with:\n          php-version: "${v}"\n`,
+    gitlabImage: (v) => `php:${v}`,
+    jenkinsNote: (v) => `// requires PHP ${v} on the agent`,
+  },
+  python: {
+    label: "Python",
+    defaultVersion: "3.12",
+    githubSetup: (v) => `      - uses: actions/setup-python@v5\n        with:\n          python-version: "${v}"\n`,
+    gitlabImage: (v) => `python:${v}`,
+    jenkinsNote: (v) => `// requires Python ${v} on the agent`,
+  },
+  none: {
+    label: "No runtime setup",
+    defaultVersion: "",
+    githubSetup: () => "",
+    gitlabImage: () => "alpine:latest",
+    jenkinsNote: () => "// no runtime setup required",
+  },
+};
